@@ -1,0 +1,33 @@
+﻿@model Order
+
+@{
+    ViewBag.Title = "결제";
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+<form asp-antiforgery="true">
+    <h2>결제</h2>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <legend>결제 정보</legend>
+
+        @Html.EditorForModel()
+    </fieldset>
+    <fieldset>
+        <legend>결제</legend>
+        <p>프로모션 코드를 입력하세요.</p>
+
+        <div class="editor-label">
+            <label title="Promo Code">프로모션 코드 :</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("PromoCode")
+        </div>
+    </fieldset>
+
+    <input type="submit" value="Submit Order" />
+</form>
